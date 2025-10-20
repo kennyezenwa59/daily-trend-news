@@ -12,17 +12,7 @@ html,body{height: 100%;}
     font-style: italic;
 }
 
-.stretch a:link,
-.stretch a:visited {
-    color: black;
-}
-
-.stretch a:hover {
-    color: red;
-    text-decoration: none;
-    transform: scale(1.1);
-    text-shadow: 0 0 10px;
-}
+.git
             /** to justify the 'top stories' **/
 
  body {
