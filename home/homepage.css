@@ -1,0 +1,107 @@
+header{position: sticky;
+
+}
+
+html,body{height: 100%;}
+
+
+.stretch {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+    font-style: italic;
+}
+
+.stretch a:link,
+.stretch a:visited {
+    color: black;
+}
+
+.stretch a:hover {
+    color: red;
+    text-decoration: none;
+    transform: scale(1.1);
+    text-shadow: 0 0 10px;
+}
+            /** to justify the 'top stories' **/
+
+ body {
+    background-color: wheat;
+     background-size: cover;
+     background-position: center;
+    text-shadow: 2px ;
+     margin: 0;
+     margin-left: 40px;
+    background-attachment: fixed;
+     }
+h1 {
+    font-family: "UnifrakturMaguntia", cursive;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 80px;
+}
+
+.content {
+  text-align: center;
+
+}
+.post-title {
+    color: black;
+}
+
+.dropcap{
+    color: red;
+    font-size: 50px;
+    font-family: "UnifrakturMaguntia", cursive;
+  font-weight: 400;
+  font-style: normal;;
+}
+.container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+
+}
+.left.cont{
+    text-align: left;
+    width: 250px;
+    overflow-y: auto;
+    position: sticky;
+    top: 0;
+    background-color: white;
+    padding: 10px;
+    box-sizing: border-box;
+    height: 100vh;
+    padding: 70px;
+    margin: 50px auto;
+    border-radius: 10px;
+    box-shadow: 0 12px 25px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+}
+
+.left.cont:hover{
+    box-shadow: 0 20px 45px rgba(0,0,0,0.4);
+    transform: translateY(-5px);
+}
+
+.right.cont{
+    text-align: right;
+    vertical-align: text-top;
+    flex: 1;
+    overflow-y: auto;
+
+}
+.sideitem {
+    padding: 10px;
+    margin-bottom: 5px;
+    background: white;
+}
+.nav.cont {
+    background-color: bisque;
+    border-radius: 70px;
+}
+img
+{
+    border-radius: 20px;
+}
