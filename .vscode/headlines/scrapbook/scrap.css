@@ -1,0 +1,314 @@
+/* === RESET AND BASE STYLES === */
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+font-family: "Poppins", sans-serif;
+}
+
+html{
+  scroll-behavior: smooth;
+}
+
+body {
+background-color: whitesmoke;
+color: white;
+display: flex;
+justify-content: center;
+min-height: 100vh;
+}
+
+h1 {
+    font-family: "UnifrakturMaguntia", cursive;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 50px;
+}
+
+/* === CONTAINER === */
+.container {
+width: 100%;
+max-width: 430px; /* mobile width */
+padding: 20px;
+margin: 0 auto;
+transition: max-width 0.3s ease;
+}
+
+/* === HEADER === */
+header {
+display: flex;
+justify-content: space-between;
+align-items: center;
+margin-bottom: 25px;
+}
+
+.time {
+font-size: 1.2em;
+font-weight: bold;
+}
+
+.greeting p {
+color: #ccc;
+font-size: 0.9em;
+}
+
+.greeting h2 {
+font-size: 1.2em;
+}
+
+.logo img {
+width: 70px;
+}
+
+/* === FAVORITES SECTION === */
+.section-header {
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+
+.search-bar {
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+
+.edit {
+color: gold;
+text-decoration: none;
+font-weight: bold;
+}
+
+.grid {
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+gap: 10px;
+margin-top: 15px;
+}
+
+.card {
+background-color: #111;
+padding: 12px;
+text-align: center;
+border-radius: 8px;
+border: 1px solid #222;
+font-size: 0.85em;
+transition: border-color 0.2s;
+}
+
+.card:hover {
+border-color: gold;
+}
+
+.hovers a:link,
+.hovers a:visited
+{
+color: white;
+}
+
+.hovers a:hover{
+  color: gold;
+}
+
+.icon{
+width: 90px;
+height: 90px;
+display: block;
+margin: 0 auto 8px;
+object-fit: contain;
+}
+
+.icon2 {
+width: 110px;
+height: 210px;
+display: block;
+margin: 0 auto 8px;
+object-fit: contain;
+
+}
+
+.size-selector {
+display: flex;
+flex-direction: column;
+align-items: center;
+margin: 10px 0;
+}
+
+.size-label {
+font-weight: bold;
+margin-bottom: 5px;
+color: #333;
+}
+
+.size-select {
+width: 80%;
+padding: 8px 10px;
+border: 1px solid #aaa;
+border-radius: 6px;
+background-color: #fff;
+font-weight: 500;
+cursor: pointer;
+outline: none;
+transition: 0.3s ease;
+}
+
+.size-select:hover {
+border-color: #000;
+}
+
+.size-select:focus {
+border-color: #000;
+box-shadow: 0 0 5px rgba(0,0,0,0.3);
+}
+
+
+
+
+.add-cart-btn {
+background: black;
+color: white;
+border: none;
+padding: 6px 12px;
+border-radius: 5px;
+margin-top: 8px;
+cursor: pointer;
+font-weight: bold;
+transition: background 0.3s;
+}
+
+.add-cart-btn:hover {
+background: #e6b800;
+}
+
+/* === SHOW ALL BUTTON & HIDDEN CARDS === */
+.hidden {
+display: none;
+}
+
+.show-all {
+background: none;
+color: gold;
+border: 1px solid gold;
+font-weight: bold;
+display: block;
+margin: 15px auto;
+padding: 8px 20px;
+border-radius: 5px;
+cursor: pointer;
+transition: background 0.3s, color 0.3s;
+}
+
+.show-all:hover {
+background: black;
+color: gold;
+}
+
+
+.show-all {
+background: none;
+color: gold;
+border: none;
+font-weight: bold;
+display: block;
+margin: 15px auto;
+cursor: pointer;
+}
+
+/* === ONE TAP PAYMENT === */
+.one-tap {
+background-color: #111;
+padding: 15px;
+border-radius: 10px;
+margin-top: 15px;
+}
+
+.one-tap .info {
+color: #ccc;
+margin-top: 8px;
+}
+
+/* FEATURED*/
+.featured {
+display: flex;
+justify-content: space-between;
+align-items: center;
+margin-top: 25px;
+}
+
+.featured a {
+color: gold;
+text-decoration: none;
+}
+
+ /* BOTTOM NAV */
+.bottom-nav {
+position: fixed;
+bottom: 0;
+left: 0;
+right: 0;
+background: #111;
+display: flex;  
+justify-content: space-around;
+padding: 10px 0;
+border-top: 1px solid#222;
+}
+
+.bottom-nav a {
+color: #ccc;
+text-decoration: none;
+font-size: 0.9em;
+}
+
+.bottom-nav a.active {
+color: gold;
+}
+
+/*  EXTRA PADDING SO CONTENT DOESN’T HIDE BEHIND NAV */
+.container {
+padding-bottom: 80px;
+}
+
+/* RESPONSIVE LAYOUT FOR LAPTOPS AND BIGGER DEVICES */
+@media (min-width: 768px) {
+body {
+justify-content: flex-start;
+background-color: #000;
+}
+
+.container {
+max-width: 1000px; /* Expand dashboard width on laptops */
+padding: 40px 60px;
+}
+
+header {
+margin-bottom: 40px;
+}
+
+.grid {
+grid-template-columns: repeat(4, 1fr); /* 4 columns on larger screens */
+gap: 20px;
+}
+
+.card {
+font-size: 0.9em;
+padding: 18px;
+}
+
+.bottom-nav {
+ /* Not fixed on large screens */
+justify-content: space-evenly;
+gap: 40px;
+padding-top: 30px;
+border-top: none;
+
+}
+
+.bottom-nav a {
+font-size: 1em;
+color: #aaa;
+}
+
+.bottom-nav a.active {
+color: gold;
+}
+}

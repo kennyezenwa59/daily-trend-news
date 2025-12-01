@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cart | Saucery Corp</title>
+<style>
+/* CART PAGE STYLING  */
+.cart-section {
+background-color: #111;
+padding: 20px;
+border-radius: 10px;
+margin-top: 15px;
+}
+
+.cart-section h3 {
+color: gold;
+margin-bottom: 15px;
+font-size: 1.1em;
+}
+
+.cart-item {
+display: flex;
+align-items: center;
+justify-content: space-between;
+background: #1a1a1a;
+padding: 12px;
+border-radius: 8px;
+margin-bottom: 12px;
+}
+
+.cart-item img {
+width: 70px;
+height: 70px;
+border-radius: 8px;
+object-fit: cover;
+}
+
+.cart-details {
+flex: 1;
+margin-left: 10px;
+}
+
+.item-name {
+color: #fff;
+margin-bottom: 4px;
+}
+
+.item-price {
+color: gold;
+font-weight: bold;
+}
+
+.cart-summary {
+text-align: right;
+margin-top: 20px;
+}
+
+.cart-summary h4 {
+color: gold;
+margin-bottom: 10px;
+}
+
+.checkout-btn {
+background: gold;
+color: black;
+border: none;
+padding: 10px 25px;
+border-radius: 5px;
+font-weight: bold;
+cursor: pointer;
+transition: background 0.3s;
+}
+
+.checkout-btn:hover {
+background: #e6b800;
+}
+
+/* bottom-nav styling reused from main page */
+.bottom-nav {
+position: fixed;
+bottom: 0;
+left: 0;
+right: 0;
+background: #111;
+display: flex;
+justify-content: space-around;
+padding: 10px 0;
+border-top: 1px solid #222;
+}
+
+.bottom-nav a {
+color: #ccc;
+text-decoration: none;
+font-size: 0.9em;
+}
+
+.bottom-nav a.active {
+color: gold;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Pirata+One&family=UnifrakturMaguntia&display=swap');
+</style>
+<link rel="stylesheet" href="scrap.css">
+</head>
+
+<body>
+<div class="container">
+<header>
+<div class="greeting">
+<p>Your</p>
+<h1>Cart</h1>
+</div>
+<div class="logo">
+<img src="companylogo.png" alt="Logo">
+</div>
+</header>
+
+<section class="cart-section">
+<h3>Items in your cart</h3>
+
+<div class="cart-item">
+<img src="IMG_1446.jpeg" alt="Agbada">
+<div class="cart-details">
+<p class="item-name">Agbada (1)</p>
+<p class="item-price">₦120,000</p>
+</div>
+</div>
+
+<div class="cart-item">
+<img src="IMG_1447.jpeg" alt="Suit">
+<div class="cart-details">
+<p class="item-name">Suit (1)</p>
+<p class="item-price">₦150,000</p>
+</div>
+</div>
+
+<div class="cart-summary">
+<h4>Total: ₦270,000</h4>
+<button class="checkout-btn">Proceed to Checkout</button>
+</div>
+</section>
+
+<nav class="bottom-nav">
+<a href="scrap.html">Home</a>
+<a href="#">Global Chatroom</a>
+<a href="#" class="active">Cart</a>
+</nav>
+</div>
+
+<script src="scrap.js"></script>
+
+</body>
+</html>
