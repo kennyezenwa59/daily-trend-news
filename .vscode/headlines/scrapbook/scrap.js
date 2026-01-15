@@ -1,14 +1,14 @@
 // ===================== SHOW ALL / SHOW LESS =====================
-const showBtn = document.getElementById('showAllBtn');
+const showBtn = document.getElementById("showAllBtn");
 if (showBtn) {
-const hiddenCards = document.querySelectorAll('.hidden');
+const hiddenCards = document.querySelectorAll(".hidden");
 let expanded = false;
 
-showBtn.addEventListener('click', () => {
+showBtn.addEventListener("click", () => {
 hiddenCards.forEach(card => {
-card.style.display = expanded ? 'none' : 'block';
+card.style.display = expanded ? "none" : "block";
 });
-showBtn.textContent = expanded ? 'Show All' : 'Show Less';
+showBtn.textContent = expanded ? "Show All" : "Show Less";
 expanded = !expanded;
 });
 }
@@ -19,42 +19,53 @@ const addCartButtons = document.querySelectorAll(".add-cart-btn");
 const cartCount = document.getElementById("cart-count");
 const cartContainer = document.querySelector(".cart-section");
 
-// Load cart
+// Load saved cart
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-// Update cart count
+// Update cart count display
 const updateCartCount = () => {
 const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
 if (cartCount) cartCount.textContent = totalItems;
 };
 updateCartCount();
 
-// Add to cart
+// ===================== FIXED ADD TO CART =====================
 addCartButtons.forEach(button => {
 button.addEventListener("click", () => {
-const card = button.closest(".card");
-const id = card.dataset.id;
-const name = card.dataset.name;
-const price = parseInt(card.dataset.price);
-const img = card.dataset.img || "";
+
+// READ DATA FROM BUTTON (Correct)
+const id = button.dataset.id;
+const name = button.dataset.name;
+const price = parseInt(button.dataset.price);
+const image = button.dataset.image ? button.dataset.image : "";
 
 const existing = cart.find(item => item.id === id);
+
 if (existing) {
 existing.quantity += 1;
 button.textContent = `Added! (${existing.quantity})`;
 } else {
-cart.push({ id, name, price, img, quantity: 1 });
+cart.push({
+id,
+name,
+price,
+image,
+quantity: 1
+});
 button.textContent = "Added!";
 }
 
 localStorage.setItem("cart", JSON.stringify(cart));
 updateCartCount();
 
-setTimeout(() => { button.textContent = "Add to Cart"; }, 1000);
+setTimeout(() => {
+button.textContent = "Add to Cart";
+}, 1000);
 });
 });
 
-// Render cart page
+// ===================== RENDER CART PAGE =====================
+
 const renderCart = () => {
 if (!cartContainer) return;
 
@@ -65,18 +76,112 @@ return;
 
 let total = 0;
 let html = `<h3>Items in your cart</h3>`;
-cart.forEach(item => {
+
+cart.forEach((item, index) => {
 const itemTotal = item.price * item.quantity;
 total += itemTotal;
+
 html += `
-<div class="cart-item">
+
+<div class="cart-item" data-index="${index}">
+<img src="${item.image}" alt="{item.name}" />
+
 <div class="cart-details">
-<p class="item-name">${item.name} (x${item.quantity})</p>
-<p class="item-price">₦${itemTotal.toLocaleString()}</p>
+
+<p class="item-name">${item.name}</p>
+
+<p class="item-price">&#8358;${itemTotal.toLocaleString()}</p>
+
+
+
+<div class="cart-controls"> 
+
+<div style="display:flex; align-items:center; gap:8px; margin-top:8px;">
+
+      <button class="qty-decrease" style="
+
+        background:#000;
+
+        color:gold;
+
+        border:1px solid gold;
+
+        width:28px;
+
+        height:28px;
+
+        border-radius:50%;
+
+        font-weight:bold;
+
+        cursor:pointer;
+
+      ">−</button>
+
+
+
+      <span style="color:white; font-weight:bold;">
+
+        ${item.quantity}
+
+      </span>
+
+
+
+      <button class="qty-increase" style="
+
+        background:#000;
+
+        color:gold;
+
+        border:1px solid gold;
+
+        width:28px;
+
+        height:28px;
+
+        border-radius:50%;
+
+        font-weight:bold;
+
+        cursor:pointer;
+
+      ">+</button>
+
+
+
+      <button class="remove-item" style="
+
+        background:transparent;
+
+        color:#ff4d4d;
+
+        border:1px solid #ff4d4d;
+
+        padding:4px;
+        border-radius:5px;
+
+        font-size:12px;
+
+        cursor:pointer;
+
+      ">
+
+        Remove
+
+      </button>
+
+    </div>
+
+ </div>
+
 </div>
-</div>
+
 `;
+
 });
+
+
 
 html += `
 <div class="cart-summary">
@@ -84,40 +189,76 @@ html += `
 <button class="checkout-btn" id="checkoutBtn">Proceed to Checkout</button>
 </div>
 `;
+
 cartContainer.innerHTML = html;
 };
 
 renderCart();
 
-// Checkout
+// ===================== CART ITEM CONTROLS =====================
 if (cartContainer) {
 cartContainer.addEventListener("click", e => {
-if (e.target && e.target.id === "checkoutBtn") {
+const itemDiv = e.target.closest(".cart-item");
+if (!itemDiv) return;
+
+const index = parseInt(itemDiv.dataset.index);
+
+// Increase quantity
+if (e.target.classList.contains("qty-increase")) {
+cart[index].quantity += 1;
+localStorage.setItem("cart", JSON.stringify(cart));
+updateCartCount();
+renderCart();
+}
+
+// Decrease quantity
+if (e.target.classList.contains("qty-decrease")) {
+if (cart[index].quantity > 1) {
+cart[index].quantity -= 1;
+} else {
+cart.splice(index, 1);
+}
+localStorage.setItem("cart", JSON.stringify(cart));
+updateCartCount();
+renderCart();
+}
+
+// Remove item
+if (e.target.classList.contains("remove-item")) {
+cart.splice(index, 1);
+localStorage.setItem("cart", JSON.stringify(cart));
+updateCartCount();
+renderCart();
+}
+
+// ===================== CHECKOUT (PHP) =====================
+if (e.target.id === "checkoutBtn") {
 if (cart.length === 0) return;
 
-const orderId = `ORD-${Date.now()}`;
-const orderData = { orderId, items: cart };
+const orderData = {
+total: cart.reduce((sum, item) => sum + item.price * item.quantity, 0),
+items: cart
+};
 
-fetch("checkout.php", {
+fetch("save_order.php", {
 method: "POST",
 headers: { "Content-Type": "application/json" },
 body: JSON.stringify(orderData)
 })
 .then(res => res.json())
 .then(data => {
-if (data.success) {
+if (data.status === "success") {
 cart = [];
 localStorage.removeItem("cart");
 updateCartCount();
-alert("Checkout successful ✅");
+alert("Order placed! ID: " + data.order_id);
 window.location.href = "scrap.html";
 } else {
 alert("Checkout failed: " + data.message);
 }
 })
-.catch(err => {
-console.error(err);
-alert("Checkout failed. Please try again.");
+.catch(() => {
+alert("Network error. Try again.");
 });
 }
 });

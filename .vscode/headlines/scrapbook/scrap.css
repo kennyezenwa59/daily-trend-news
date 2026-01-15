@@ -312,3 +312,175 @@ color: #aaa;
 color: gold;
 }
 }
+ 
+.login-container {
+  min-height: 60vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.login-card {
+width: 100%;
+max-width: 360px;
+padding: 25px;
+border-radius: 12px;
+
+/* Glass effect */
+
+    background: rgba(255, 255, 255, 0.08);
+
+    backdrop-filter: blur(16px);
+
+    -webkit-backdrop-filter: blur(16px);
+
+
+
+    border-radius: 16px;
+
+    border: 1px solid rgba(255, 255, 255, 0.15);
+
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+
+}
+
+
+
+.login-card h2 {
+
+    font-size: 1.6rem;
+
+    margin-bottom: 6px;
+
+}
+
+
+
+.login-card p {
+
+    font-size: 0.9rem;
+
+    color: #cbd5f5;
+
+    margin-bottom: 20px;
+
+}
+
+
+
+.input-group {
+
+    margin-bottom: 16px;
+
+}
+
+
+
+.input-group label {
+
+    font-size: 0.8rem;
+
+    color: #e5e7eb;
+
+    margin-bottom: 6px;
+
+    display: block;
+
+}
+
+
+
+.input-group input {
+
+    width: 100%;
+
+    padding: 12px 14px;
+
+    border-radius: 10px;
+
+
+
+    background: rgba(255, 255, 255, 0.12);
+
+    border: 1px solid rgba(255, 255, 255, 0.18);
+
+    color: #ffffff;
+
+
+
+    outline: none;
+
+}
+
+
+
+.input-group input::placeholder {
+
+    color: #9ca3af;
+
+}
+
+
+
+.input-group input:focus {
+
+    border-color: gold;
+
+    background: rgba(255, 255, 255, 0.18);
+
+}
+
+
+.login-btn {
+
+    width: 100%;
+
+    padding: 14px;
+
+    margin-top: 10px;
+
+
+
+    background: linear-gradient(gold);
+
+    color: white;
+
+    border: none;
+
+    border-radius: 12px;
+
+
+
+    font-size: 0.95rem;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+}
+
+
+
+.login-btn:hover {
+
+    opacity: 0.9;
+
+}
+
+
+.login-card a {
+
+    color: gold;
+
+    text-decoration: none;
+
+}
+
+
+
+.login-card a:hover {
+
+    text-decoration: underline;
+    color: gold;
+}
